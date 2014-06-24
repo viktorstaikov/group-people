@@ -1,0 +1,22 @@
+{
+  "name": "group-people",
+  "version": "0.0.1",
+  "homepage": "https://github.com/viktorstaikov/group-people",
+  "description": "Simple web application to group people in groups randomly",
+  "main": "index.html",
+  "keywords": [
+    "group"
+  ],
+  "authors": [
+    "ViktorStaikov"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
