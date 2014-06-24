@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hack-Students System</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="start-here" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+            	<span>Display only the students from
+            	<select id="courses">
+            	</select>
+            	course for the
+            	<select id="course-group">
+					<option value="0" selected="selected">any</option>
+					<option value="1">early</option>
+					<option value="2">late</option>
+            	</select>
+            	group.
+            	</span>
+                <button id="filter-btn" class="btn">Go</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                
+                <table class="table">
+                    
+                </table>
+            </div>
+        </div>
+        <br />
+        
+    </div>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/lodash/dist/lodash.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+
+<script type="text/template" id="trTemplate">
+	<tbody>
+	<% _.forEach(students, function(student) { %>
+		<tr>
+			<td data-field="name"><%= student.name %></td>
+			<td data-field="github"><%= student.github %></td>
+			<td data-field="courses">
+				<ul class="">
+				<% _.forEach(student.courses, function(course) { %>
+					<li class="">
+						<h4 class="">
+							<%= course.name + ' - ' + (course.group==1 ? 'early' : 'late') + ' group'%>
+						</h4>
+					</li>
+				<% }); %>
+				</ul>
+			</td>
+			<td data-field="available">
+				<input type="checkbox" class="available-flag"
+				<% if (student.available) { %>
+				    checked
+				<% } %>
+				>
+			</td>
+		</tr>
+	<% }); %>
+	</tbody>
+</script>
+
+<script type="text/template" id="courses-select-template">
+	<option value="0" selected="selected">any</option>
+	<% _.forEach(courses, function(course) { %>
+		<option value="<%= course %>" ><%= course %></option>
+	<% }); %>
+</script>
+
+</body>
+</html>

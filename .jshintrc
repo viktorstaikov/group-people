@@ -2,7 +2,8 @@
   "jquery" : true,
   "browser" : true,
   "globals" : {
-    "alert" : true
+    "alert" : true,
+    "_" : true
   }
 }
 
