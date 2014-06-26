@@ -11,11 +11,30 @@ $(document).ready(function() {
       alert(textStatus);
     }
 
-    _selectedStudents = _students = _.filter(students, function(student) {
-      var regex = /\s/;
-      return regex.test(student.name);
+    students = students.sort(function(studentA, studentB){
+      var result = studentA.available < studentB.available || (studentA.available === studentB.available && studentA.name < studentB.name); 
+
+      if(studentA.name < studentB.name) {
+        console.log('"' + studentA.name + '" < "' + studentB.name+ '"')
+      }
+
+
+      if(studentA.name > studentB.name) {
+        console.log('"' + studentA.name + '" > "' + studentB.name+ '"')
+      }
+
+      if(studentA.name == studentB.name) {
+        console.log('"' + studentA.name + '" == "' + studentB.name + '"')
+      }
+
+      return result;
     });
 
+    // _selectedStudents = _students = _.filter(students, function(student) {
+    //   var regex = /\s/;
+    //   return regex.test(student.name);
+    // });
+    _selectedStudents = _students = students;
     _courses = _(_students).flatten('courses').flatten('name').uniq().value();
 
     initOtherStuff();
